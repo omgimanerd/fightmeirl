@@ -1,3 +1,6 @@
+@import '../bower/ubuntu-fontface/ubuntu-base.scss';
+@import '../bower/ubuntu-fontface/ubuntu-mono.scss';
+
 html, body {
   width:100%;
   margin: 0;
@@ -10,7 +13,6 @@ html, body {
   margin: auto;
   color: #333;
   padding-top: 2em;
-  display: none;
 }
 
 h1 {
@@ -18,16 +20,30 @@ h1 {
   text-align: center;
 }
 
-#front form {
+#front{
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
   text-align: center;
   color: #333;
+  background-color: pink;
 }
 
 #front input {
   vertical-align: center;
-  width: 20%;
-  height: 100%;
+  width: 50%;
+  height: 10%;
   border-radius: 10%;
+}
+
+#back{
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
 }
 
 #back input {
@@ -37,4 +53,5 @@ h1 {
   background-color: BLACK;
   text-align: center;
   padding-top: center;
+  display: inline;
 }
