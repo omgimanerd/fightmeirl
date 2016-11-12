@@ -2,5 +2,10 @@ extends layout.pug
 
 block body
   div desktop
+    canvas
 
 block scripts
+  if devMode
+    script(src='/public/js/desktop.js')
+  else
+    script(src='/public/dist/desktop.min.js')

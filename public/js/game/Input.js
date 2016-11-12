@@ -12,13 +12,6 @@ function Input() {
 }
 
 /** @type {boolean} */
-Input.LEFT_CLICK = false;
-/** @type {boolean} */
-Input.RIGHT_CLICK = false;
-/** @type {Array<number>} */
-Input.MOUSE = [];
-
-/** @type {boolean} */
 Input.LEFT = false;
 /** @type {boolean} */
 Input.UP = false;

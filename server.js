@@ -1,7 +1,6 @@
 /**
  * This is the server app script that is run on the server.
  * @author alvin.lin.dev@gmail.com (Alvin Lin)
- * TODO: Add unit tests!
  */
 
 var DEV_MODE = false;
@@ -27,13 +26,16 @@ var mobileDetect = require('mobile-detect');
 var morgan = require('morgan');
 var socketIO = require('socket.io');
 
-// var Game = require('./lib/Game');
+var Game = require('./lib/Game');
+var PairManager = require('./lib/PairManager');
 
 // Initialization.
 var app = express();
 var server = http.Server(app);
 var io = socketIO(server);
-// var game = new Game();
+
+var game = new Game();
+var pairManager = new PairManager();
 
 app.set('port', PORT);
 app.set('view engine', 'pug');
@@ -62,6 +64,7 @@ app.get('/', function(request, response) {
 io.on('connection', function(socket) {
   // When a new player joins, the server adds a new player to the game.
   socket.on('new-player', function(data, callback) {
+    console.log(socket.request.headers['user-agent']);
     // game.addNewPlayer(data.name, socket);
     // io.sockets.emit('chat-server-to-clients', {
     //   name: '[Tank Anarchy]',
