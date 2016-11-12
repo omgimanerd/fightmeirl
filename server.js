@@ -22,7 +22,7 @@ process.argv.forEach(function(value, index, array) {
 // Dependencies.
 var express = require('express');
 var http = require('http');
-var mobileDetect = require('mobile-detect');
+var MobileDetect = require('mobile-detect');
 var morgan = require('morgan');
 var socketIO = require('socket.io');
 
@@ -46,7 +46,7 @@ app.use('/shared', express.static(__dirname + '/shared'));
 
 // Routing
 app.get('/', function(request, response) {
-  var device = new mobileDetect(request.headers['user-agent']);
+  var device = new MobileDetect(request.headers['user-agent']);
   if (device.mobile()) {
     response.render('mobile', {
       devMode: DEV_MODE
@@ -62,16 +62,21 @@ app.get('/', function(request, response) {
 // game based on the input it receives. Everything runs asynchronously with
 // the game loop.
 io.on('connection', function(socket) {
-  // When a new player joins, the server adds a new player to the game.
+  var device = new MobileDetect(socket.request.headers['user-agent']);
+
   socket.on('new-player', function(data, callback) {
-    console.log(socket.request.headers['user-agent']);
-    // game.addNewPlayer(data.name, socket);
-    // io.sockets.emit('chat-server-to-clients', {
-    //   name: '[Tank Anarchy]',
-    //   message: data.name + ' has joined the game.',
-    //   isNotification: true
-    // });
-    callback();
+    if (device.mobile()) {
+      pairManager.addMobile(socket.id, socket);
+    } else {
+      pairManager.addDesktop(socket.id, socket);
+      callback(socket.id);
+    }
+  });
+
+  socket.on('pair', function(data, callback) {
+    if (device.mobile()) {
+
+    }
   });
 
   // Update the internal object states every time a player sends an intent

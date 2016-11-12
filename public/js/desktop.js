@@ -6,6 +6,9 @@
 
 $(document).ready(function() {
   var socket = io();
+  socket.emit('new-player', null, function(data) {
+    console.log(data);
+  });
   // var game = Game.create(socket,
   //                        document.getElementById('canvas'),
   //                        document.getElementById('leaderboard'));

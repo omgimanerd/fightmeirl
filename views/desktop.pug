@@ -1,8 +1,16 @@
 extends layout.pug
 
+block head
+  link(
+    rel='stylesheet'
+    href='/public/dist/desktop.min.css'
+  )
+
 block body
-  div desktop
-    canvas
+  div(id='desktop')
+    div(id='id')
+    div(id='canvas')
+      canvas
 
 block scripts
   if devMode
