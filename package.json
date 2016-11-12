@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/omgimanerd/fightmeirl#readme",
   "dependencies": {
+    "bower": "^1.8.0",
     "express": "^4.14.0",
     "google-closure-compiler": "^20161024.3.0",
     "gulp": "^3.9.1",
@@ -27,6 +28,7 @@
     "gulp-sass": "^2.3.2",
     "hashmap": "^2.0.6",
     "merge-stream": "^1.0.0",
+    "mobile-detect": "^1.3.4",
     "morgan": "^1.7.0",
     "pug": "^2.0.0-beta6",
     "socket.io": "^1.5.1"

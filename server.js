@@ -23,6 +23,7 @@ process.argv.forEach(function(value, index, array) {
 // Dependencies.
 var express = require('express');
 var http = require('http');
+var mobileDetect = require('mobile-detect');
 var morgan = require('morgan');
 var socketIO = require('socket.io');
 
@@ -43,9 +44,16 @@ app.use('/shared', express.static(__dirname + '/shared'));
 
 // Routing
 app.get('/', function(request, response) {
-  response.render('index.html', {
-    dev_mode: DEV_MODE
-  });
+  var device = new mobileDetect(request.headers['user-agent']);
+  if (device.mobile()) {
+    response.render('mobile', {
+      devMode: DEV_MODE
+    });
+  } else {
+    response.render('desktop', {
+      devMode: DEV_MODE
+    });
+  }
 });
 
 // Server side input handler, modifies the state of the players and the
