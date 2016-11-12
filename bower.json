@@ -17,7 +17,6 @@
   ],
   "dependencies": {
     "bootstrap": "^3.3.7",
-    "jquery": "^3.1.1",
-    "ubuntu-fontface": "^0.1.12"
+    "jquery": "^3.1.1"
   }
 }

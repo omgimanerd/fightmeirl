@@ -6,19 +6,14 @@
 
 $(document).ready(function() {
   var socket = io();
+  var game = Game.create(socket, document.getElementById('canvas'));
 
   socket.emit('new-desktop', null, function(id) {
     $('.id').text(id);
   });
 
   socket.on('paired', function(data) {
-    console.log('paired');
-    var game = Game.create(
-      socket, document.getElementById('canvas'));
+    $('id-panel').hide();
+    game.animate();
   });
-
-  // var game = Game.create(socket,
-  //                        document.getElementById('canvas'),
-  //                        document.getElementById('leaderboard'));
-
 });

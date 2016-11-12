@@ -99,36 +99,36 @@ Game.prototype.draw = function() {
      * coordinate to draw background tiles from left to right, top to bottom,
      * so that the entire ViewPort is appropriately filled.
      */
-    var center = this.viewPort.selfCoords;
-    var leftX = this.self['x'] - Constants.CANVAS_WIDTH / 2;
-    var topY = this.self['y'] - Constants.CANVAS_HEIGHT / 2;
-    var drawStartX = Math.max(
-        leftX - (leftX % Drawing.TILE_SIZE), Constants.WORLD_MIN);
-    var drawStartY = Math.max(
-        topY - (topY % Drawing.TILE_SIZE), Constants.WORLD_MIN);
-    /**
-     * drawEndX and drawEndY have an extra Drawing.TILE_SIZE added to account
-     * for the edge case where we are at the bottom rightmost part of the
-     * world.
-     */
-    var drawEndX = Math.min(
-        drawStartX + Constants.CANVAS_WIDTH + Drawing.TILE_SIZE,
-        Constants.WORLD_MAX);
-    var drawEndY = Math.min(
-        drawStartY + Constants.CANVAS_HEIGHT + Drawing.TILE_SIZE,
-        Constants.WORLD_MAX);
-    this.drawing.drawTiles(
-        this.viewPort.toCanvasX(drawStartX),
-        this.viewPort.toCanvasY(drawStartY),
-        this.viewPort.toCanvasX(drawEndX),
-        this.viewPort.toCanvasY(drawEndY)
-    );
-
-    // Draw the projectiles next.
-    for (var i = 0; i < this.projectiles.length; ++i) {
-      this.drawing.drawBullet(
-          this.viewPort.toCanvasCoords(this.projectiles[i]),
-          this.projectiles[i]['orientation']);
-    }
+    // var center = this.viewPort.selfCoords;
+    // var leftX = this.self['x'] - Constants.CANVAS_WIDTH / 2;
+    // var topY = this.self['y'] - Constants.CANVAS_HEIGHT / 2;
+    // var drawStartX = Math.max(
+    //     leftX - (leftX % Drawing.TILE_SIZE), Constants.WORLD_MIN);
+    // var drawStartY = Math.max(
+    //     topY - (topY % Drawing.TILE_SIZE), Constants.WORLD_MIN);
+    // /**
+    //  * drawEndX and drawEndY have an extra Drawing.TILE_SIZE added to account
+    //  * for the edge case where we are at the bottom rightmost part of the
+    //  * world.
+    //  */
+    // var drawEndX = Math.min(
+    //     drawStartX + Constants.CANVAS_WIDTH + Drawing.TILE_SIZE,
+    //     Constants.WORLD_MAX);
+    // var drawEndY = Math.min(
+    //     drawStartY + Constants.CANVAS_HEIGHT + Drawing.TILE_SIZE,
+    //     Constants.WORLD_MAX);
+    // this.drawing.drawTiles(
+    //     this.viewPort.toCanvasX(drawStartX),
+    //     this.viewPort.toCanvasY(drawStartY),
+    //     this.viewPort.toCanvasX(drawEndX),
+    //     this.viewPort.toCanvasY(drawEndY)
+    // );
+    //
+    // // Draw the projectiles next.
+    // for (var i = 0; i < this.projectiles.length; ++i) {
+    //   this.drawing.drawBullet(
+    //       this.viewPort.toCanvasCoords(this.projectiles[i]),
+    //       this.projectiles[i]['orientation']);
+    // }
   }
 };
