@@ -24,30 +24,6 @@ function Drawing(context, images) {
  * @const
  * @type {string}
  */
-Drawing.NAME_FONT = '14px Helvetica';
-
-/**
- * @const
- * @type {string}
- */
-Drawing.NAME_COLOR = 'black';
-
-/**
- * @const
- * @type {string}
- */
-Drawing.HP_COLOR = 'green';
-
-/**
- * @const
- * @type {string}
- */
-Drawing.HP_MISSING_COLOR = 'red';
-
-/**
- * @const
- * @type {string}
- */
 Drawing.BASE_IMG_URL = '/public/img/';
 
 /**
@@ -55,13 +31,6 @@ Drawing.BASE_IMG_URL = '/public/img/';
  * @type {Object}
  */
 Drawing.IMG_SRCS = {
-  'self_tank': Drawing.BASE_IMG_URL + 'self_tank.png',
-  'self_turret': Drawing.BASE_IMG_URL + 'self_turret.png',
-  'other_tank': Drawing.BASE_IMG_URL + 'other_tank.png',
-  'other_turret': Drawing.BASE_IMG_URL + 'other_turret.png',
-  'shield': Drawing.BASE_IMG_URL + 'shield.png',
-  'bullet': Drawing.BASE_IMG_URL + 'bullet.png',
-  'tile': Drawing.BASE_IMG_URL + 'tile.png'
 };
 
 /**

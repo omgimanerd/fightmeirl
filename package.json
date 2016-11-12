@@ -15,5 +15,20 @@
   "bugs": {
     "url": "https://github.com/omgimanerd/fightmeirl/issues"
   },
-  "homepage": "https://github.com/omgimanerd/fightmeirl#readme"
+  "homepage": "https://github.com/omgimanerd/fightmeirl#readme",
+  "dependencies": {
+    "express": "^4.14.0",
+    "google-closure-compiler": "^20161024.3.0",
+    "gulp": "^3.9.1",
+    "gulp-clean-css": "^2.0.13",
+    "gulp-gjslint": "^0.1.5",
+    "gulp-plumber": "^1.1.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^2.3.2",
+    "hashmap": "^2.0.6",
+    "merge-stream": "^1.0.0",
+    "morgan": "^1.7.0",
+    "pug": "^2.0.0-beta6",
+    "socket.io": "^1.5.1"
+  }
 }
