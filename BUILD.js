@@ -11,10 +11,18 @@ module.exports = {
     {
       name: 'desktop stylesheet',
       sourceFiles: [
-        './public/sass/desktop.scss'
+        './public/scss/desktop.scss'
       ],
       outputDirectory: './public/dist',
       outputFile: 'desktop.min.css'
+    },
+    {
+      name: 'mobile stylesheet',
+      sourceFiles: [
+        './public/scss/mobile.scss'
+      ],
+      outputDirectory: './public/dist',
+      outputFile: 'mobile.min.css'
     }
   ]
 };
