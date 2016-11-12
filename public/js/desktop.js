@@ -9,12 +9,15 @@ $(document).ready(function() {
   socket.emit('new-player', null, function(data) {
     $('.id').text(data);
   });
+
+  socket.on('paired', function(data) {
+    console.log('paired');
+    var game = Game.create(
+      socket, document.getElementById('canvas'));
+  });
   // var game = Game.create(socket,
   //                        document.getElementById('canvas'),
   //                        document.getElementById('leaderboard'));
-  // var chat = Chat.create(socket,
-  //                        document.getElementById('chat-display'),
-  //                        document.getElementById('chat-input'));
 
   // Input.applyEventHandlers(document.getElementById('canvas'));
   // Input.addMouseTracker(document.getElementById('canvas'));
