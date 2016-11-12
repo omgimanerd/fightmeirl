@@ -4,21 +4,22 @@ block head
   link(rel='stylesheet' href='/public/dist/mobile.min.css')
 block body
   div(id='back')
-    input(id='A' type='text' name='Ainput')
-    input(id='B' type='text' name='Binput')
-    input(id='C' type='text' name='Cinput')
-    input(id='D' type='text' name='Dinput')
-    input(id='left' type='text' name='LEFTinput')
-    input(id='right' type='text' name='RIGHTinput')
-    input(id='up' type='text' name='UPinput')
-    input(id='down' type='text' name='DOWNinput')
+    button(id='A') A
+    button(id='B') B
+    button(id='C') C
+    button(id='D') D
+    button(id='left') LEFT
+    button(id='right') RIGHT
+    button(id='up') UP
+    button(id='down') DOWN
   div(id='front')
     h1 Enter code
-    input(id='connect' type='text' name='codeinput')
-  
+    input(id='connect' type='text')
+
 
 block scripts
   if devMode
+    script(src='/public/js/mobile/InputHandler.js')
     script(src='/public/js/mobile/mobile.js')
   else
     script(src='/public/dist/mobile.min.js')

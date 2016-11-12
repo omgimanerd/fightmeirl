@@ -58,6 +58,12 @@ app.get('/', function(request, response) {
   }
 });
 
+app.get('/test', function(request, response) {
+  response.render('mobile', {
+    devMode: true
+  });
+});
+
 // Server side input handler, modifies the state of the players and the
 // game based on the input it receives. Everything runs asynchronously with
 // the game loop.
@@ -65,9 +71,9 @@ io.on('connection', function(socket) {
   var device = new MobileDetect(socket.request.headers['user-agent']);
 
   socket.on('new-mobile', function(data, callback) {
-    if (device.mobile()) {
+    // if (device.mobile()) {
       pairManager.addMobile(socket.id, socket);
-    }
+    // }
   });
 
   socket.on('new-desktop', function(data, callback) {
@@ -78,19 +84,19 @@ io.on('connection', function(socket) {
   });
 
   socket.on('pair', function(data, callback) {
-    if (device.mobile()) {
-      var desktopSocket = pairManager.pair(socket.id, data.id);
-      if (desktopSocket) {
-        desktopSocket.emit('paired');
-        game.addNewPlayer(socket.id, desktopSocket);
-        return callback({
-          success: true
-        });
-      }
+    // if (device.mobile()) {
+    var desktopSocket = pairManager.pair(socket.id, data.id);
+    if (desktopSocket) {
+      desktopSocket.emit('paired');
+      game.addNewPlayer(socket.id, desktopSocket);
       return callback({
-        success: false
+        success: true
       });
     }
+    return callback({
+      success: false
+    });
+    // }
   });
 
   // Update the internal object states every time a player sends an intent
@@ -110,8 +116,8 @@ io.on('connection', function(socket) {
 // Server side game loop, runs at 60Hz and sends out update packets to all
 // clients every tick.
 setInterval(function() {
-  console.log(pairManager.mobiles);
-  console.log(pairManager.desktops);
+  // console.log(pairManager.mobiles);
+  // console.log(pairManager.desktops);
   // game.update();
   // game.sendState();
 }, FRAME_RATE);
