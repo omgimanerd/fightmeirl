@@ -16,26 +16,28 @@ html, body {
   display: none;
 }
 
-h1{
+h1 {
   position: relative;
   text-align: center;
 }
 
-#front form{
+#front form {
   text-align: center;
   color: #333;
 }
 
-#front input{
+#front input {
   vertical-align: center;
   width: 20%;
   height: 100%;
   border-radius: 10%;
 }
 
-#back input{
+#back input {
     border-radius: 100%;
-    display: inline;
-    
+    width: 3em;
+    height: 3em;
+    background-color: BLACK;
+    text-align: center;
+    padding-top: center;
 }
-
