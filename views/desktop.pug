@@ -7,10 +7,11 @@ block head
   )
 
 block body
-  div(id='desktop')
-    div(id='id')
-    div(id='canvas')
+  div(class='desktop')
+    div(class='canvas')
       canvas
+    div(class='id-background') Desktop ID:
+      span(class='id')
 
 block scripts
   if devMode
