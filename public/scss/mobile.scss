@@ -1,0 +1,41 @@
+@import '../bower/ubuntu-fontface/ubuntu-base.scss';
+@import '../bower/ubuntu-fontface/ubuntu-mono.scss';
+
+html, body {
+  width:100%;
+  margin: 0;
+  border: 0;
+  font-family: "Ubuntu";
+  background-color: #9c9c9c;
+}
+
+#front {
+  margin: auto;
+  color: #333;
+  padding-top: 2em;
+  display: none;
+}
+
+h1{
+  position: relative;
+  text-align: center;
+}
+
+#front form{
+  text-align: center;
+  color: #333;
+}
+
+#front input{
+  vertical-align: center;
+  width: 20%;
+  height: 100%;
+  border-radius: 10%;
+}
+
+#back input{
+    border-radius: 100%;
+    display: inline;
+    
+}
+
