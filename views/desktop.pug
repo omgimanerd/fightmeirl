@@ -9,12 +9,18 @@ block head
 block body
   div(class='desktop')
     div(class='canvas')
-      canvas
-    div(class='id-background') Desktop ID:
+      canvas(id='canvas')
+    div(class='id-panel') Desktop ID:
       span(class='id')
 
 block scripts
   if devMode
+    script(src='/shared/base.js')
+    script(src='/shared/Constants.js')
+    script(src='/shared/Util.js')
+    script(src='/public/js/desktop/Drawing.js')
+    script(src='/public/js/desktop/Game.js')
+    script(src='/public/js/desktop/ViewPort.js')
     script(src='/public/js/desktop/desktop.js')
   else
     script(src='/public/dist/desktop.min.js')

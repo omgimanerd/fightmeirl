@@ -9,10 +9,20 @@ $(document).ready(function() {
 
   socket.emit('new-mobile');
 
+  $('#connect').on('keydown', function(event) {
+    if (event.keyCode == 13) {
+      socket.emit('pair', {
+        id: $('#connect').val()
+      }, function(status) {
+        console.log(status);
+        if (status.success) {
 
-  // Input.applyEventHandlers(document.getElementById('canvas'));
-  // Input.addMouseTracker(document.getElementById('canvas'));
+        }
+      });
+    }
+  });
 
   setInterval(function() {
+
   }, 1000);
 });

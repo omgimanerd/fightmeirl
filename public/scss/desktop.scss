@@ -1,6 +1,3 @@
-@import '../bower/ubuntu-fontface/ubuntu-base.scss';
-@import '../bower/ubuntu-fontface/ubuntu-mono.scss';
-
 html, body {
   width: 100%;
   margin: 0;
@@ -16,7 +13,21 @@ html, body {
   left: 0;
 }
 
-.id-background {
+.canvas {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+#canvas{
+  width: 800px;
+  height: 600px;
+  border: 1px solid black;
+}
+
+.id-panel {
   position: absolute;
   top: 0;
   right: 0;
@@ -26,14 +37,6 @@ html, body {
   background-color: #9c9c9c;
   padding-top: 200px;
   font-size: 50px;
-}
-
-.canvas {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
 }
 
 .id {
