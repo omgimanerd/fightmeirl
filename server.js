@@ -75,31 +75,39 @@ io.on('connection', function(socket) {
 
   socket.on('pair', function(data, callback) {
     if (device.mobile()) {
-
+      var desktopSocket = pairManager.pair(socket.id, data.id);
+      if (desktopSocket) {
+        desktopSocket.emit('paired');
+        game.addNewPlayer(socket.id, desktopSocket);
+        return callback({
+          success: true
+        });
+      }
+      return callback({
+        success: false
+      });
     }
   });
 
   // Update the internal object states every time a player sends an intent
   // packet.
   socket.on('player-action', function(data) {
-    // game.updatePlayer(socket.id, data.keyboardState, data.turretAngle,
-    //                   data.shot, data.timestamp);
+    if (device.mobile()) {
+
+    }
   });
 
   // When a player disconnects, remove them from the game.
   socket.on('disconnect', function() {
-    // var name = game.removePlayer(socket.id);
-    // io.sockets.emit('chat-server-to-clients', {
-    //   name: '[Tank Anarchy]',
-    //   message: name + ' has left the game.',
-    //   isNotification: true
-    // });
+    pairManager.remove(socket.id);
   });
 });
 
 // Server side game loop, runs at 60Hz and sends out update packets to all
 // clients every tick.
 setInterval(function() {
+  console.log(pairManager.mobiles);
+  console.log(pairManager.desktops);
   // game.update();
   // game.sendState();
 }, FRAME_RATE);

@@ -14,10 +14,9 @@
  * @param {ViewPort} viewPort The ViewPort object that will manage the
  *   player's view of the entities.
  */
-function Game(socket, leaderboard, drawing, viewPort) {
+function Game(socket, drawing, viewPort) {
   this.socket = socket;
 
-  this.leaderboard = leaderboard;
   this.drawing = drawing;
   this.viewPort = viewPort;
 
@@ -27,22 +26,6 @@ function Game(socket, leaderboard, drawing, viewPort) {
    * @type {Array<Object>}
    */
   this.players = [];
-
-  /**
-   * @type {Array<Object>}
-   */
-  this.projectiles = [];
-
-  /**
-   * @type {Array<Object>}
-   */
-  this.powerups = [];
-
-  /**
-   * @type {Array<Object>}
-   */
-  this.explosions = [];
-  this.latency = 0;
 
   this.animationFrameId = 0;
 }
@@ -55,16 +38,15 @@ function Game(socket, leaderboard, drawing, viewPort) {
  *   leaderboard in.
  * @return {Game}
  */
-Game.create = function(socket, canvasElement, leaderboardElement) {
+Game.create = function(socket, canvasElement) {
   canvasElement.width = Constants.CANVAS_WIDTH;
   canvasElement.height = Constants.CANVAS_HEIGHT;
   var canvasContext = canvasElement.getContext('2d');
 
-  var leaderboard = Leaderboard.create(leaderboardElement);
   var drawing = Drawing.create(canvasContext);
   var viewPort = ViewPort.create();
 
-  var game = new Game(socket, leaderboard, drawing, viewPort);
+  var game = new Game(socket, drawing, viewPort);
   game.init();
   return game;
 };
@@ -89,10 +71,6 @@ Game.prototype.receiveGameState = function(state) {
 
   this.self = state['self'];
   this.players = state['players'];
-  this.projectiles = state['projectiles'];
-  this.powerups = state['powerups'];
-  this.explosions = state['explosions'];
-  this.latency = state['latency'];
 };
 
 /**
@@ -127,23 +105,6 @@ Game.prototype.update = function() {
   if (this.self) {
     this.viewPort.update(this.self['x'], this.self['y']);
 
-    var turretAngle = Math.atan2(
-        Input.MOUSE[1] - Constants.CANVAS_HEIGHT / 2,
-        Input.MOUSE[0] - Constants.CANVAS_WIDTH / 2) + Math.PI / 2;
-
-    // Emits an event for the containing the player's intention to move
-    // or shoot to the server.
-    var packet = {
-      'keyboardState': {
-        'up': Input.UP,
-        'right': Input.RIGHT,
-        'down': Input.DOWN,
-        'left': Input.LEFT
-      },
-      'turretAngle': turretAngle,
-      'shot': Input.LEFT_CLICK,
-      'timestamp': (new Date()).getTime()
-    };
     this.socket.emit('player-action', packet);
   }
 };
@@ -192,36 +153,6 @@ Game.prototype.draw = function() {
       this.drawing.drawBullet(
           this.viewPort.toCanvasCoords(this.projectiles[i]),
           this.projectiles[i]['orientation']);
-    }
-
-    // Draw the powerups next.
-    for (var i = 0; i < this.powerups.length; ++i) {
-      this.drawing.drawPowerup(
-          this.viewPort.toCanvasCoords(this.powerups[i]),
-          this.powerups[i]['name']);
-    }
-
-    // Draw the tank that represents the player.
-    if (this.self) {
-      this.drawing.drawTank(
-          true,
-          this.viewPort.toCanvasCoords(this.self),
-          this.self['orientation'],
-          this.self['turretAngle'],
-          this.self['name'],
-          this.self['health'],
-          this.self['powerups']['shield_powerup']);
-    }
-    // Draw any other tanks.
-    for (var i = 0; i < this.players.length; ++i) {
-      this.drawing.drawTank(
-          false,
-          this.viewPort.toCanvasCoords(this.players[i]),
-          this.players[i]['orientation'],
-          this.players[i]['turretAngle'],
-          this.players[i]['name'],
-          this.players[i]['health'],
-          this.players[i]['powerups']['shield_powerup']);
     }
   }
 };

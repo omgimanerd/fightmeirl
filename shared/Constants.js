@@ -11,6 +11,10 @@ function Constants() {
   throw new Error('Constants should not be instantiated!');
 }
 
+Constants.CANVAS_WIDTH = 800;
+
+Constants.CANVAS_HEIGHT = 600;
+
 if (typeof module === 'object') {
   /**
    * If Constants is loaded as a Node module, then this line is called.
