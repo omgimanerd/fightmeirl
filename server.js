@@ -64,10 +64,14 @@ app.get('/', function(request, response) {
 io.on('connection', function(socket) {
   var device = new MobileDetect(socket.request.headers['user-agent']);
 
-  socket.on('new-player', function(data, callback) {
+  socket.on('new-mobile', function(data, callback) {
     if (device.mobile()) {
       pairManager.addMobile(socket.id, socket);
-    } else {
+    }
+  });
+
+  socket.on('new-desktop', function(data, callback) {
+    if (!device.mobile()) {
       pairManager.addDesktop(socket.id, socket);
       callback(socket.id);
     }

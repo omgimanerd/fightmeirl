@@ -4,16 +4,6 @@
  * @author alvin.lin.dev@gmail.com (Alvin Lin)
  */
 
-/**
- * Creates a game on the client side to manage and render the players,
- * projectiles, and powerups.
- * @constructor
- * @param {Object} socket The socket connected to the server.
- * @param {Leaderboard} leaderboard The Leaderboard object to update.
- * @param {Drawing} drawing The Drawing object that will render the game.
- * @param {ViewPort} viewPort The ViewPort object that will manage the
- *   player's view of the entities.
- */
 function Game(socket, drawing, viewPort) {
   this.socket = socket;
 
@@ -67,8 +57,6 @@ Game.prototype.init = function() {
  *   the server.
  */
 Game.prototype.receiveGameState = function(state) {
-  this.leaderboard.update(state['leaderboard']);
-
   this.self = state['self'];
   this.players = state['players'];
 };
@@ -92,22 +80,10 @@ Game.prototype.stopAnimation = function() {
  * This method is a convenience method that calls update and draw.
  */
 Game.prototype.run = function() {
-  this.update();
   this.draw();
   this.animate();
 };
 
-/**
- * Updates the state of the game client side and relays intents to the
- * server.
- */
-Game.prototype.update = function() {
-  if (this.self) {
-    this.viewPort.update(this.self['x'], this.self['y']);
-
-    this.socket.emit('player-action', packet);
-  }
-};
 
 /**
  * Draws the state of the game onto the HTML5 canvas.

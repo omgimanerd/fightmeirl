@@ -1,7 +1,7 @@
 extends layout.pug
 
 block head
-  link(rel='StyleSheet' href='/public/dist/mobile.min.css') 
+  link(rel='StyleSheet' href='/public/dist/mobile.min.css')
 block body
   div(id='front')
     h1 Enter code
@@ -15,4 +15,7 @@ block body
     input(id='right' type='text' name='RIGHTinput')
     input(id='up' type='text' name='UPinput')
     input(id='down' type='text' name='DOWNinput')
-    
+
+block scripts
+  if devMode
+    script(src='/public/js/mobile/mobile.js')
