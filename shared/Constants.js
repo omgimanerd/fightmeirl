@@ -15,6 +15,10 @@ Constants.CANVAS_WIDTH = 800;
 
 Constants.CANVAS_HEIGHT = 600;
 
+Constants.WORLD_MIN = 0;
+
+Constants.WORLD_MAX = 2500;
+
 if (typeof module === 'object') {
   /**
    * If Constants is loaded as a Node module, then this line is called.
