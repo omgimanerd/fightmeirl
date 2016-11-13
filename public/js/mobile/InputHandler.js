@@ -11,44 +11,49 @@ InputHandler.UP = false;
 InputHandler.DOWN = false;
 
 InputHandler.apply = function(){
-  $('#A').on('mousedown', function(e) {
+  $('#A').on('touchstart', function(e) {
     InputHandler.PUNCH = true;
-    console.log('A');
   });
-  $('#A').on('mouseup', function(e) {
+  // $('#A').on('touchmove', function(e) {
+  //   InputHandler.PUNCH = false;
+  // });
+  $('#A').on('touchend', function(e) {
     InputHandler.PUNCH = false;
-    console.log('A');
   });
-  $('#B').on('mousedown', function(e) {
+  $('#B').on('touchstart', function(e) {
     InputHandler.KICK = true;
-    console.log('B');
   });
-  $('#B').on('mouseup', function(e) {
+  // $('#B').on('touchmove', function(e) {
+  //   InputHandler.KICK = false;
+  // });
+  $('#B').on('touchend', function(e) {
     InputHandler.KICK = false;
-    console.log('B');
   });
-  $('#left').on('mousedown', function(e) {
+  $('#left').on('touchstart', function(e) {
     InputHandler.LEFT = true;
-    console.log('left');
   });
-  $('#left').on('mouseup', function(e) {
+  $('#left').on('touchend', function(e) {
     InputHandler.LEFT = false;
-    console.log('left');
   });
-  $('#right').on('mousedown', function(e) {
+  // $('#left').on('touchmove', function(e) {
+  //   InputHandler.LEFT = false;
+  // });
+  $('#right').on('touchstart', function(e) {
     InputHandler.RIGHT = true;
-    console.log('right');
   });
-  $('#right').on('mouseup', function(e) {
+  $('#right').on('touchend', function(e) {
     InputHandler.RIGHT = false;
-    console.log('right');
   });
-  $('#up').on('mousedown', function(e) {
+  // $('#right').on('touchmove', function(e) {
+  //   InputHandler.RIGHT = false;
+  // });
+  $('#up').on('touchstart', function(e) {
     InputHandler.UP = true;
-    console.log('up');
   });
-  $('#up').on('mouseup', function(e) {
+  $('#up').on('touchend', function(e) {
     InputHandler.UP = false;
-    console.log('up');
   });
+  // $('#up').on('touchmove', function(e) {
+  //   InputHandler.UP = false;
+  // });
 };
