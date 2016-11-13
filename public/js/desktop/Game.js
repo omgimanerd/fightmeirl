@@ -114,6 +114,11 @@ Game.prototype.draw = function() {
     );
     console.log(player['screamPower']);
     $('.scream-volume').width((player['screamPower'] - 1) * 100);
+    if (player['screamPower'] > 4.5) {
+      $('.scream-volume').text('IT\'S OVER 9000');
+    } else {
+      $('.scream-volume').text(player['screamPower'] * 2000);
+    }
 
     // Iterate through players, draw each using info from json obj.
     for (var i = 0; i < this.players.length; ++i) {
