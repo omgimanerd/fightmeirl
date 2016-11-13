@@ -4,6 +4,9 @@ html, body {
   border: 0;
   font-family: "Ubuntu";
   background-color: #9c9c9c;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
 }
 
 #front {
