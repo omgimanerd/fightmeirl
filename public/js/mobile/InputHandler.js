@@ -15,8 +15,11 @@ InputHandler.apply = function(){
   if(window.DeviceMotionEvent){
       window.addEventListener('devicemotion', deviceMotionHandler, false);
       function deviceMotionHandler(event){
-        if(event.accelerationIncludingGravity.x>25){InputHandler.PUNCH = true; console.log(meter.volume);}
-        else{InputHandler.PUNCH = false;}
+        if(event.accelerationIncludingGravity.x>25) {
+          InputHandler.PUNCH = true;
+        } else {
+          InputHandler.PUNCH = false;
+        }
       }
   }
   var audioContext = null;
@@ -24,7 +27,7 @@ InputHandler.apply = function(){
   audioContext = new AudioContext();
   try {
         // monkeypatch getUserMedia
-        navigator.getUserMedia = 
+        navigator.getUserMedia =
         	navigator.getUserMedia ||
         	navigator.webkitGetUserMedia ||
         	navigator.mozGetUserMedia;
@@ -45,7 +48,7 @@ InputHandler.apply = function(){
     } catch (e) {
         alert('getUserMedia threw exception :' + e);
     }
-    
+
     function didntGetStream() {
     alert('Stream generation failed.');
 }
@@ -59,7 +62,7 @@ function gotStream(stream) {
     // Create a new volume meter and connect it.
     meter = createAudioMeter(audioContext);
     mediaStreamSource.connect(meter);
-  
+
 }
 
 function createAudioMeter(audioContext,clipLevel,averaging,clipLag) {
@@ -117,9 +120,9 @@ function volumeAudioProcess( event ) {
     // to the previous sample - take the max here because we
     // want "fast attack, slow release."
     this.volume = Math.max(rms, this.volume*this.averaging);
+    InputHandler.SCREAM = this.volume;
 }
 
-  InputHandler.SCREAM = meter.volume;
 
   $('#left').on('touchstart', function(e) {
     InputHandler.LEFT = true;

@@ -99,7 +99,6 @@ Game.prototype.draw = function() {
     for (var platform of this.platforms) {
       platform['x'] = this.viewPort.toCanvasX(platform['x']);
       platform['y'] = this.viewPort.toCanvasY(platform['y']);
-      console.log(platform['x']);
       this.drawing.drawPlatform(
         platform['x'], platform['y'],
         platform['width'], platform['height']);
@@ -113,7 +112,8 @@ Game.prototype.draw = function() {
       player['width'], player['height'], player['health'],
       player['isPunching'], player['isKicking']
     );
-    $('.scream-volume').width(player['screamPower']);
+    console.log(player['screamPower']);
+    $('.scream-volume').width((player['screamPower'] - 1) * 25);
 
     // Iterate through players, draw each using info from json obj.
     for (var i = 0; i < this.players.length; ++i) {
