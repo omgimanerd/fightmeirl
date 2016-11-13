@@ -14,6 +14,7 @@ function Game(socket, drawing, viewPort) {
 
   this.players = [];
 
+  this.animationFrameCount = 0;
   this.animationFrameId = 0;
 }
 
@@ -79,6 +80,7 @@ Game.prototype.stopAnimation = function() {
 Game.prototype.run = function() {
   this.draw();
   this.animate();
+  this.animationFrameCount++;
 };
 
 
@@ -99,10 +101,12 @@ Game.prototype.draw = function() {
       true,
       player['x'],
       player['y'],
-      player['isPunching'],
-      player['isKicking'],
+      player['vx'],
       player['facing'],
-      player['vx']
+      player['width'],
+      player['height'],
+      player['isPunching'],
+      player['isKicking']
     );
 
     // Iterate through players, draw each using info from json obj.
@@ -111,13 +115,9 @@ Game.prototype.draw = function() {
       player['x'] = this.viewPort.toCanvasX(player['x']);
       player['y'] = this.viewPort.toCanvasY(player['y']);
       this.drawing.drawPlayer(
-        false,
-        player['x'],
-        player['y'],
-        player['isPunching'],
-        player['isKicking'],
-        player['facing'],
-        player['vx']
+        false, player['x'], player['y'], player['vx'], player['facing'],
+        player['width'], player['height'],
+        player['isPunching'], player['isKicking']
       );
     }
   }

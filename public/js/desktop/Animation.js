@@ -55,10 +55,10 @@ Animation.ANIMATION_TIME = 30;
  * @param {[type]} animationPercent [description]
  * @return {[type]}
  */
-Animation.prototype.getSprite = function(isSelf, isPunching, isKicking,
-                                         facing, vx, animationPercent) {
+Animation.prototype.getSprite = function(isSelf, facing, vx,
+                                         isPunching, isKicking,
+                                         animationPercent) {
   var animationSet = null;
-  console.log(arguments);
   //Am I myself? If so, paint green
   if (isSelf){
     //Am I facing right? If so, paint right
@@ -124,6 +124,5 @@ Animation.prototype.getSprite = function(isSelf, isPunching, isKicking,
       }
     }
   }
-  console.log(animationSet);
   return animationSet[Math.floor(animationPercent * animationSet.length)];
 };

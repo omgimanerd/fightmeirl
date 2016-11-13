@@ -39,12 +39,13 @@ Drawing.prototype.clear = function() {
                          Constants.CANVAS_HEIGHT);
 };
 
-Drawing.prototype.drawPlayer = function(isSelf, x, y, isPunching, isKicking,
-                                        facing, vx) {
+Drawing.prototype.drawPlayer = function(isSelf, x, y, vx, facing,
+                                        width, height,
+                                        isPunching, isKicking) {
   this.context.save();
   this.context.translate(x, y);
   var image = this.animationFrames.getSprite(
-    isSelf, isPunching, isKicking, facing, vx, 0.99);
-    this.context.drawImage(image, -image.width / 2, -image.height / 2);
+    isSelf, facing, vx, isPunching, isKicking, 0.99);
+    this.context.drawImage(image, -width / 2, -height / 2, width, height);
   this.context.restore();
 };
