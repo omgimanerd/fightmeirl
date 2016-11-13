@@ -99,9 +99,26 @@ Game.prototype.draw = function() {
      * coordinate to draw background tiles from left to right, top to bottom,
      * so that the entire ViewPort is appropriately filled.
      */
-    // var center = this.viewPort.selfCoords;
-    // var leftX = this.self['x'] - Constants.CANVAS_WIDTH / 2;
-    // var topY = this.self['y'] - Constants.CANVAS_HEIGHT / 2;
+    var center = this.viewPort.selfCoords;
+    var leftX = this.self['x'] - Constants.CANVAS_WIDTH / 2;
+    var topY = this.self['y'] - Constants.CANVAS_HEIGHT / 2;
+    //drawbackgrounds
+    
+    //draw self
+    var player = this.self;
+    player['x'] = player.viewPort.toCanvasX(player[i]['x']);
+    player['y'] = player.viewPort.toCanvasY(player[i]['y']);
+    drawing.drawPlayer(false,player['x'],player['y'],player['isPunching'],player['isKicking']);
+    
+    //Iterate through players, draw each using info from json obj.
+    for (var i = 0; i < this.players.length; ++i) {
+      player = this.players[i];
+      player['x'] = player.viewPort.toCanvasX(player[i]['x']);
+      player['y'] = player.viewPort.toCanvasY(player[i]['y']);
+      drawing.drawPlayer(false,player['x'],player['y'],player['isPunching'],player['isKicking']);
+    }      
+  
+}
     // var drawStartX = Math.max(
     //     leftX - (leftX % Drawing.TILE_SIZE), Constants.WORLD_MIN);
     // var drawStartY = Math.max(
