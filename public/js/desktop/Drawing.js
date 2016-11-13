@@ -31,7 +31,7 @@ Drawing.BASE_IMG_URL = '/public/img/';
  * @type {Object}
  */
 Drawing.IMG_SRCS = {
-  p: '../../img/p.png'
+  p: BASE_IMG_URL + 'p.png'
 };
 
 /**

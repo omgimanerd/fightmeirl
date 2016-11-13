@@ -90,6 +90,7 @@ Game.prototype.run = function() {
  */
 Game.prototype.draw = function() {
   if (this.self) {
+    this.viewport.update(player['x'],player['y']);
     // Clear the canvas.
     this.drawing.clear();
 
@@ -106,15 +107,15 @@ Game.prototype.draw = function() {
     
     //draw self
     var player = this.self;
-    player['x'] = player.viewPort.toCanvasX(player[i]['x']);
-    player['y'] = player.viewPort.toCanvasY(player[i]['y']);
+    player['x'] = this.viewPort.toCanvasX(player[i]['x']);
+    player['y'] = this.viewPort.toCanvasY(player[i]['y']);
     drawing.drawPlayer(false,player['x'],player['y'],player['isPunching'],player['isKicking']);
     
     //Iterate through players, draw each using info from json obj.
     for (var i = 0; i < this.players.length; ++i) {
       player = this.players[i];
-      player['x'] = player.viewPort.toCanvasX(player[i]['x']);
-      player['y'] = player.viewPort.toCanvasY(player[i]['y']);
+      player['x'] = this.viewPort.toCanvasX(player[i]['x']);
+      player['y'] = this.viewPort.toCanvasY(player[i]['y']);
       drawing.drawPlayer(false,player['x'],player['y'],player['isPunching'],player['isKicking']);
     }      
   
