@@ -49,3 +49,11 @@ Drawing.prototype.drawPlayer = function(isSelf, x, y, vx, facing,
     this.context.drawImage(image, -width / 2, -height / 2, width, height);
   this.context.restore();
 };
+
+Drawing.prototype.drawPlatforms = function(platforms){
+  for(var i = 0; i < platforms.length; i++){
+    var r = platforms[i];
+    this.context.rect(r.x,r.y,r.width,r.height);
+    this.context.stroke();
+  }
+}
