@@ -13,7 +13,7 @@ $(document).ready(function() {
   });
 
   socket.on('paired', function(data) {
-    $('id-panel').hide();
+    $('.id-panel').hide();
     game.animate();
   });
 });
