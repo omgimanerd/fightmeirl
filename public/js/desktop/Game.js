@@ -109,15 +109,9 @@ Game.prototype.draw = function() {
     player['x'] = this.viewPort.toCanvasX(player['x']);
     player['y'] = this.viewPort.toCanvasY(player['y']);
     this.drawing.drawPlayer(
-      true,
-      player['x'],
-      player['y'],
-      player['vx'],
-      player['facing'],
-      player['width'],
-      player['height'],
-      player['isPunching'],
-      player['isKicking']
+      true, player['x'], player['y'], player['vx'], player['facing'],
+      player['width'], player['height'], player['health'],
+      player['isPunching'], player['isKicking']
     );
 
     // Iterate through players, draw each using info from json obj.
@@ -127,7 +121,7 @@ Game.prototype.draw = function() {
       player['y'] = this.viewPort.toCanvasY(player['y']);
       this.drawing.drawPlayer(
         false, player['x'], player['y'], player['vx'], player['facing'],
-        player['width'], player['height'],
+        player['width'], player['height'], player['health'],
         player['isPunching'], player['isKicking']
       );
     }

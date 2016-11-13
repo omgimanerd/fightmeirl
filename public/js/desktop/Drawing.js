@@ -39,21 +39,29 @@ Drawing.prototype.clear = function() {
 };
 
 Drawing.prototype.drawPlayer = function(isSelf, x, y, vx, facing,
-                                        width, height,
+                                        width, height, health,
                                         isPunching, isKicking) {
   this.context.save();
   this.context.translate(x, y);
   var image = this.animationFrames.getSprite(
     isSelf, facing, vx, isPunching, isKicking, 0.99);
     this.context.drawImage(image, -width / 2, -height / 2, width, height);
+  this.context.beginPath();
+  for (var i = 0; i < 10; i++) {
+    if (i < health) {
+      this.context.fillStyle = 'green';
+      this.context.fillRect(-25 + 5 * i, -42, 5, 4);
+    } else {
+      this.context.fillStyle = 'red';
+      this.context.fillRect(-25 + 5 * i, -42, 5, 4);
+    }
+  }
   this.context.restore();
 };
 
 Drawing.prototype.drawPlatform = function(x, y, width, height) {
   this.context.save();
-  this.context.beginPath();
   this.context.fillStyle = 'black';
-  this.context.rect(x - width / 2, y - height / 2, width, height);
-  this.context.fill();
+  this.context.fillRect(x - width / 2, y - height / 2, width, height);
   this.context.restore();
 };

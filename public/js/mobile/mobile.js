@@ -23,7 +23,7 @@ $(document).ready(function() {
               right: InputHandler.RIGHT,
               jump: InputHandler.UP,
               punch: InputHandler.PUNCH,
-              kick: InputHandler.KICK
+              scream: InputHandler.SCREAM
             });
           }, 1000 / 60);
         } else {
