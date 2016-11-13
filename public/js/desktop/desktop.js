@@ -9,7 +9,7 @@ $(document).ready(function() {
   var game = Game.create(socket, document.getElementById('canvas'));
 
   socket.emit('new-desktop', null, function(id) {
-    $('.id').text(id);
+    $('.id').text(id.substring(0, 6));
   });
 
   socket.on('paired', function(data) {

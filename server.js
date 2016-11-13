@@ -34,8 +34,8 @@ var app = express();
 var server = http.Server(app);
 var io = socketIO(server);
 
-var game = new Game();
-var pairManager = new PairManager();
+var game = Game.create();
+var pairManager = PairManager.create();
 
 app.set('port', PORT);
 app.set('view engine', 'pug');
