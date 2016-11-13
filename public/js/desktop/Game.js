@@ -13,6 +13,7 @@ function Game(socket, drawing, viewPort) {
   this.self = null;
 
   this.players = [];
+  this.platforms = [];
 
   this.animationFrameCount = 0;
   this.animationFrameId = 0;
@@ -57,6 +58,7 @@ Game.prototype.init = function() {
 Game.prototype.receiveGameState = function(state) {
   this.self = state['self'];
   this.players = state['players'];
+  this.platforms = state['platforms'];
 };
 
 /**
