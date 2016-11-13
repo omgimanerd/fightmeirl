@@ -85,26 +85,26 @@ io.on('connection', function(socket) {
 
   socket.on('pair', function(data, callback) {
     // if (device.mobile()) {
-    var desktopSocket = pairManager.pair(socket.id, data.id);
-    if (desktopSocket) {
-      desktopSocket.emit('paired');
-      game.addNewPlayer(socket.id, desktopSocket);
+      var desktopSocket = pairManager.pair(socket.id, data.id);
+      if (desktopSocket) {
+        desktopSocket.emit('paired');
+        game.addNewPlayer(socket.id, desktopSocket);
+        return callback({
+          success: true
+        });
+      }
       return callback({
-        success: true
+        success: false
       });
-    }
-    return callback({
-      success: false
-    });
     // }
   });
 
   // Update the internal object states every time a player sends an intent
   // packet.
   socket.on('player-action', function(data) {
-    if (device.mobile()) {
-
-    }
+    // if (device.mobile()) {
+      game.updatePlayerOnInput(socket.id, data);
+    // }
   });
 
   // When a player disconnects, remove them from the game.
@@ -116,10 +116,8 @@ io.on('connection', function(socket) {
 // Server side game loop, runs at 60Hz and sends out update packets to all
 // clients every tick.
 setInterval(function() {
-  // console.log(pairManager.mobiles);
-  // console.log(pairManager.desktops);
-  // game.update();
-  // game.sendState();
+  game.update();
+  game.sendState();
 }, FRAME_RATE);
 
 // Starts the server.

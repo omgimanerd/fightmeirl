@@ -18,8 +18,6 @@ $(document).ready(function() {
           $('#front').hide();
           InputHandler.apply();
           setInterval(function() {
-            console.log(InputHandler.LEFT,
-            InputHandler.RIGHT, InputHandler.UP);
             socket.emit('player-action', {
               left: InputHandler.LEFT,
               right: InputHandler.RIGHT,
