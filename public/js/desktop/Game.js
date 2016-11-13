@@ -147,5 +147,5 @@ Game.prototype.draw = function() {
     //       this.viewPort.toCanvasCoords(this.projectiles[i]),
     //       this.projectiles[i]['orientation']);
     // }
-  }
-};
+  };
+
