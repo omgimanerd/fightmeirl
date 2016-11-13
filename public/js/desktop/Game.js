@@ -113,7 +113,7 @@ Game.prototype.draw = function() {
       player['isPunching'], player['isKicking']
     );
     console.log(player['screamPower']);
-    $('.scream-volume').width((player['screamPower'] - 1) * 50);
+    $('.scream-volume').width((player['screamPower'] - 1) * 100);
 
     // Iterate through players, draw each using info from json obj.
     for (var i = 0; i < this.players.length; ++i) {
