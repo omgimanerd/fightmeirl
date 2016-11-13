@@ -112,11 +112,11 @@ Game.prototype.draw = function() {
       player['width'], player['height'], player['health'],
       player['isPunching'], player['isKicking']
     );
-    $('.scream-volume').width((player['screamPower'] - 1) * 100);
+    $('.scream-volume').width((player['screamPower'] - 1) * 200);
     if (player['screamPower'] > 4) {
       $('.scream-volume').text('IT\'S OVER 9000');
     } else {
-      $('.scream-volume').text((player['screamPower'] - 1) * 3000);
+      $('.scream-volume').text(Math.round((player['screamPower'] - 1) * 3000));
     }
 
     // Iterate through players, draw each using info from json obj.
