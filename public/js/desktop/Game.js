@@ -12,9 +12,6 @@ function Game(socket, drawing, viewPort) {
 
   this.self = null;
 
-  /**
-   * @type {Array<Object>}
-   */
   this.players = [];
 
   this.animationFrameId = 0;
