@@ -10,6 +10,7 @@ html, body {
   margin: auto;
   color: #333;
   padding-top: 2em;
+  display:none;
 }
 
 h1 {
@@ -52,4 +53,20 @@ h1 {
   text-align: center;
   padding-top: center;
   display: inline;
+}
+
+button{
+  padding: 50;
+}
+
+.att{
+  float: left;
+}
+
+.action{
+  float; right;
+}
+
+#A{
+  padding-left: 80;
 }
