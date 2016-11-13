@@ -11,24 +11,13 @@ InputHandler.UP = false;
 InputHandler.DOWN = false;
 
 InputHandler.apply = function(){
-  $('#A').on('touchstart', function(e) {
-    InputHandler.PUNCH = true;
-  });
-  // $('#A').on('touchmove', function(e) {
-  //   InputHandler.PUNCH = false;
-  // });
-  $('#A').on('touchend', function(e) {
-    InputHandler.PUNCH = false;
-  });
-  $('#B').on('touchstart', function(e) {
-    InputHandler.KICK = true;
-  });
-  // $('#B').on('touchmove', function(e) {
-  //   InputHandler.KICK = false;
-  // });
-  $('#B').on('touchend', function(e) {
-    InputHandler.KICK = false;
-  });
+  if(window.DeviceMotionEvent){
+      window.addEventListener('devicemotion', deviceMotionHandler, false);
+      function deviceMotionHandler(event){
+        if(event.accelerationIncludingGravity.x>25){InputHandler.PUNCH = true;}
+        else{InputHandler.PUNCH = false;}
+      }
+  }
   $('#left').on('touchstart', function(e) {
     InputHandler.LEFT = true;
   });
