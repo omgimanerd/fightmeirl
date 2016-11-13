@@ -89,64 +89,35 @@ Game.prototype.run = function() {
  * Draws the state of the game onto the HTML5 canvas.
  */
 Game.prototype.draw = function() {
-  if (this.self) {
-    this.viewport.update(player['x'],player['y']);
+  var player = this.self;
+  if (player) {
+    this.viewPort.update(0, 2450);
     // Clear the canvas.
     this.drawing.clear();
 
-    /**
-     * Draw the background first behind the other entities, we calculate the
-     * closest top-left coordinate outside of the ViewPort. We use that
-     * coordinate to draw background tiles from left to right, top to bottom,
-     * so that the entire ViewPort is appropriately filled.
-     */
-    var center = this.viewPort.selfCoords;
-    var leftX = this.self['x'] - Constants.CANVAS_WIDTH / 2;
-    var topY = this.self['y'] - Constants.CANVAS_HEIGHT / 2;
-    //drawbackgrounds
-    
     //draw self
-    var player = this.self;
-    player['x'] = this.viewPort.toCanvasX(player[i]['x']);
-    player['y'] = this.viewPort.toCanvasY(player[i]['y']);
-    drawing.drawPlayer(false,player['x'],player['y'],player['isPunching'],player['isKicking']);
-    
-    //Iterate through players, draw each using info from json obj.
-    for (var i = 0; i < this.players.length; ++i) {
-      player = this.players[i];
-      player['x'] = this.viewPort.toCanvasX(player[i]['x']);
-      player['y'] = this.viewPort.toCanvasY(player[i]['y']);
-      drawing.drawPlayer(false,player['x'],player['y'],player['isPunching'],player['isKicking']);
-    }      
-  
-}
-    // var drawStartX = Math.max(
-    //     leftX - (leftX % Drawing.TILE_SIZE), Constants.WORLD_MIN);
-    // var drawStartY = Math.max(
-    //     topY - (topY % Drawing.TILE_SIZE), Constants.WORLD_MIN);
-    // /**
-    //  * drawEndX and drawEndY have an extra Drawing.TILE_SIZE added to account
-    //  * for the edge case where we are at the bottom rightmost part of the
-    //  * world.
-    //  */
-    // var drawEndX = Math.min(
-    //     drawStartX + Constants.CANVAS_WIDTH + Drawing.TILE_SIZE,
-    //     Constants.WORLD_MAX);
-    // var drawEndY = Math.min(
-    //     drawStartY + Constants.CANVAS_HEIGHT + Drawing.TILE_SIZE,
-    //     Constants.WORLD_MAX);
-    // this.drawing.drawTiles(
-    //     this.viewPort.toCanvasX(drawStartX),
-    //     this.viewPort.toCanvasY(drawStartY),
-    //     this.viewPort.toCanvasX(drawEndX),
-    //     this.viewPort.toCanvasY(drawEndY)
-    // );
-    //
-    // // Draw the projectiles next.
-    // for (var i = 0; i < this.projectiles.length; ++i) {
-    //   this.drawing.drawBullet(
-    //       this.viewPort.toCanvasCoords(this.projectiles[i]),
-    //       this.projectiles[i]['orientation']);
-    // }
-  };
+    player['x'] = this.viewPort.toCanvasX(player['x']);
+    player['y'] = this.viewPort.toCanvasY(player['y']);
+    this.drawing.drawPlayer(
+      false,
+      player['x'],
+      player['y'],
+      player['isPunching'],
+      player['isKicking']
+    );
 
+    // Iterate through players, draw each using info from json obj.
+    for (var i = 0; i < this.players.length; ++i) {
+      var player = this.players[i];
+      player['x'] = this.viewPort.toCanvasX(player['x']);
+      player['y'] = this.viewPort.toCanvasY(player['y']);
+      this.drawing.drawPlayer(
+        false,
+        player['x'],
+        player['y'],
+        player['isPunching'],
+        player['isKicking']
+      );
+    }
+  }
+};

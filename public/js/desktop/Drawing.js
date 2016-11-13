@@ -31,7 +31,8 @@ Drawing.BASE_IMG_URL = '/public/img/';
  * @type {Object}
  */
 Drawing.IMG_SRCS = {
-  p: BASE_IMG_URL + 'p.png'
+  p: Drawing.BASE_IMG_URL + 'p.png',
+  e: Drawing.BASE_IMG_URL + 'p.png'
 };
 
 /**
@@ -186,9 +187,9 @@ Drawing.prototype.drawTiles = function(minX, minY, maxX, maxY) {
   this.context.restore();
 };
 
-/* 
+/*
  * This function draws the play to the canvas
- * 
+ *
  */
 Drawing.prototype.drawPlayer = function(isSelf, x, y, isPunching, isKicking){
   this.context.save();
@@ -197,15 +198,15 @@ Drawing.prototype.drawPlayer = function(isSelf, x, y, isPunching, isKicking){
       var image = this.images['pp'];
       this.context.translate(x, y);
       this.context.drawImage(image,x,y,-image.width/2, -image.height/2);
-    }
-    else if(isKicking){
+    } else if(isKicking){
       var image = this.images['pk'];
       this.context.translate(x, y);
       this.context.drawImage(image,x,y,-image.width/2, -image.height/2);
-    }else{
+    } else{
       var image = this.images['p'];
       this.context.translate(x, y);
-      this.context.drawImage(image,x,y,-image.width/2, -image.height/2);
+      this.context.drawImage(
+        image, -image.width / 2, -image.height / 2);
     }
   }
   else{
@@ -213,15 +214,15 @@ Drawing.prototype.drawPlayer = function(isSelf, x, y, isPunching, isKicking){
       var image = this.images['ep'];
       this.context.translate(x, y);
       this.context.drawImage(image,x,y,-image.width/2, -image.height/2);
-    }
-    else if(isKicking){
+    } else if(isKicking){
       var image = this.images['ek'];
       this.context.translate(x, y);
       this.context.drawImage(image,x,y,-image.width/2, -image.height/2);
-    }else{
+    } else{
       var image = this.images['e'];
       this.context.translate(x, y);
-      this.context.drawImage(image,x,y,-image.width/2, -image.height/2);
+      this.context.drawImage(
+        image, -image.width / 2, -image.height / 2);
     }
   }
   this.context.restore();
