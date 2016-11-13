@@ -91,7 +91,7 @@ Game.prototype.run = function() {
 Game.prototype.draw = function() {
   var player = this.self;
   if (player) {
-    this.viewPort.update(0, 2450);
+    this.viewPort.update(player['x'], player['y']);
     // Clear the canvas.
     this.drawing.clear();
 
