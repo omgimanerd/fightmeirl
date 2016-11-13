@@ -51,11 +51,14 @@ h1 {
   background-color: black;
   text-align: center;
   padding-top: center;
-  display: inline;
+  display: block;
 }
 
 button{
-  padding: 50;
+  padding: 0;
+  border: 0px;
+  width: 100%;
+  height: 20%;
 }
 
 .att{
@@ -67,5 +70,13 @@ button{
 }
 
 #A{
-  padding-left: 80;
+  background-color: #53f442;
+}
+
+#B{
+  background-color: #cc0e0e;
+}
+
+#left, #right, #up{
+  background-color: #3a0ecc;
 }
