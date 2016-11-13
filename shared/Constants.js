@@ -19,6 +19,8 @@ Constants.WORLD_MIN = 0;
 
 Constants.WORLD_MAX = 2500;
 
+Constants.WORLD_PADDING = 0;
+
 if (typeof module === 'object') {
   /**
    * If Constants is loaded as a Node module, then this line is called.
