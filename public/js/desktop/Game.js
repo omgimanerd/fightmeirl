@@ -96,6 +96,15 @@ Game.prototype.draw = function() {
     // Clear the canvas.
     this.drawing.clear();
 
+    for (var platform of this.platforms) {
+      platform['x'] = this.viewPort.toCanvasX(platform['x']);
+      platform['y'] = this.viewPort.toCanvasY(platform['y']);
+      console.log(platform['x']);
+      this.drawing.drawPlatform(
+        platform['x'], platform['y'],
+        platform['width'], platform['height']);
+    }
+
     //draw self
     player['x'] = this.viewPort.toCanvasX(player['x']);
     player['y'] = this.viewPort.toCanvasY(player['y']);

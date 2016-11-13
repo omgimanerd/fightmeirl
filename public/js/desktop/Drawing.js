@@ -35,8 +35,7 @@ Drawing.create = function(context) {
  * Clears the canvas.
  */
 Drawing.prototype.clear = function() {
-  this.context.clearRect(0, 0, Constants.CANVAS_WIDTH,
-                         Constants.CANVAS_HEIGHT);
+  this.context.clearRect(-5000, -5000, 10000, 10000);
 };
 
 Drawing.prototype.drawPlayer = function(isSelf, x, y, vx, facing,
@@ -50,10 +49,11 @@ Drawing.prototype.drawPlayer = function(isSelf, x, y, vx, facing,
   this.context.restore();
 };
 
-Drawing.prototype.drawPlatforms = function(platforms){
-  for(var i = 0; i < platforms.length; i++){
-    var r = platforms[i];
-    this.context.rect(r.x,r.y,r.width,r.height);
-    this.context.stroke();
-  }
-}
+Drawing.prototype.drawPlatform = function(x, y, width, height) {
+  this.context.save();
+  this.context.beginPath();
+  this.context.fillStyle = 'black';
+  this.context.rect(x - width / 2, y - height / 2, width, height);
+  this.context.fill();
+  this.context.restore();
+};
