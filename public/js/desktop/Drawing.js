@@ -197,32 +197,32 @@ Drawing.prototype.drawPlayer = function(isSelf, x, y, isPunching, isKicking){
     if(isPunching){
       var image = this.images['pp'];
       this.context.translate(x, y);
-      this.context.drawImage(image,x,y,-image.width/2, -image.height/2);
+      this.context.drawImage(image, image.width, image.height, -image.width/2, -image.height/2);
     } else if(isKicking){
       var image = this.images['pk'];
       this.context.translate(x, y);
-      this.context.drawImage(image,x,y,-image.width/2, -image.height/2);
+      this.context.drawImage(image, image.width, image.height, -image.width/2, -image.height/2);
     } else{
       var image = this.images['p'];
       this.context.translate(x, y);
       this.context.drawImage(
-        image, -image.width / 2, -image.height / 2);
+        image, image.width, image.height, -image.width / 2, -image.height / 2);
     }
   }
   else{
     if(isPunching){
       var image = this.images['ep'];
       this.context.translate(x, y);
-      this.context.drawImage(image,x,y,-image.width/2, -image.height/2);
+      this.context.drawImage(image, image.width, image.height, -image.width/2, -image.height/2);
     } else if(isKicking){
       var image = this.images['ek'];
       this.context.translate(x, y);
-      this.context.drawImage(image,x,y,-image.width/2, -image.height/2);
+      this.context.drawImage(image, image.width, image.height, -image.width/2, -image.height/2);
     } else{
       var image = this.images['e'];
       this.context.translate(x, y);
       this.context.drawImage(
-        image, -image.width / 2, -image.height / 2);
+        image, image.width, image.height, -image.width / 2, -image.height / 2);
     }
   }
   this.context.restore();
